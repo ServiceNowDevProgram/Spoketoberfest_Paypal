@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="13a3837b1ba71010ed077596cc4bcbe5" sys_domain="global" table="connection_attributes" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>23Thom</sys_created_by>
+            <sys_created_on>2020-10-06 12:41:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d3a3837b1ba71010ed077596cc4bcbf7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="connection_attributes" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">13a3837b1ba71010ed077596cc4bcbe5</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">17a3837b1ba71010ed077596cc4bcbf1</sys_ui_section>
+            <sys_updated_by>23Thom</sys_updated_by>
+            <sys_updated_on>2020-10-06 12:41:31</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>23Thom</sys_created_by>
+            <sys_created_on>2020-10-06 12:41:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9ba3837b1ba71010ed077596cc4bcbfc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="connection_attributes" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">13a3837b1ba71010ed077596cc4bcbe5</sys_ui_form>
+            <sys_ui_section caption="Reference Specification" display_value="Reference Specification" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">d7a3837b1ba71010ed077596cc4bcbf7</sys_ui_section>
+            <sys_updated_by>23Thom</sys_updated_by>
+            <sys_updated_on>2020-10-06 12:41:31</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>23Thom</sys_created_by>
+            <sys_created_on>2020-10-06 12:41:30</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>57a3837b1ba71010ed077596cc4bcbea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="connection_attributes" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">13a3837b1ba71010ed077596cc4bcbe5</sys_ui_form>
+            <sys_ui_section caption="Choice List Specification" display_value="Choice List Specification" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">53a3837b1ba71010ed077596cc4bcbe7</sys_ui_section>
+            <sys_updated_by>23Thom</sys_updated_by>
+            <sys_updated_on>2020-10-06 12:41:30</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>23Thom</sys_created_by>
+            <sys_created_on>2020-10-06 12:41:30</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1fa3837b1ba71010ed077596cc4bcbed</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="connection_attributes" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">13a3837b1ba71010ed077596cc4bcbe5</sys_ui_form>
+            <sys_ui_section caption="Dependent Field" display_value="Dependent Field" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">5ba3837b1ba71010ed077596cc4bcbea</sys_ui_section>
+            <sys_updated_by>23Thom</sys_updated_by>
+            <sys_updated_on>2020-10-06 12:41:30</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>4</position>
+            <sys_created_by>23Thom</sys_created_by>
+            <sys_created_on>2020-10-06 12:41:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>13a3837b1ba71010ed077596cc4bcbf1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="connection_attributes" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">13a3837b1ba71010ed077596cc4bcbe5</sys_ui_form>
+            <sys_ui_section caption="Calculated Value" display_value="Calculated Value" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">13a3837b1ba71010ed077596cc4bcbee</sys_ui_section>
+            <sys_updated_by>23Thom</sys_updated_by>
+            <sys_updated_on>2020-10-06 12:41:31</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>5</position>
+            <sys_created_by>23Thom</sys_created_by>
+            <sys_created_on>2020-10-06 12:41:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>13a3c37b1ba71010ed077596cc4bcb00</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="connection_attributes" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">13a3837b1ba71010ed077596cc4bcbe5</sys_ui_form>
+            <sys_ui_section caption="Default Value" display_value="Default Value" name="connection_attributes" sys_domain="global" view="7966be310a0a0b8c00bd504090503227">9fa3837b1ba71010ed077596cc4bcbfc</sys_ui_section>
+            <sys_updated_by>23Thom</sys_updated_by>
+            <sys_updated_on>2020-10-06 12:41:31</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>connection_attributes</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>23Thom</sys_created_by>
+            <sys_created_on>2020-10-06 12:41:30</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>13a3837b1ba71010ed077596cc4bcbe5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>connection_attributes</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Paypal Spoke" source="x_snc_paypal_spoke">718d109ddb98cc1064dcf5861d9619e8</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+            <sys_update_name>sys_ui_form_sections_13a3837b1ba71010ed077596cc4bcbe5</sys_update_name>
+            <sys_updated_by>23Thom</sys_updated_by>
+            <sys_updated_on>2020-10-06 12:41:30</sys_updated_on>
+            <sys_user/>
+            <view display_value="Advanced" name="advanced">7966be310a0a0b8c00bd504090503227</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>
