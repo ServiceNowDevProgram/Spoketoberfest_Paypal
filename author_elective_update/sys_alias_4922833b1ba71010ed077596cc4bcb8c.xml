@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_alias">
+    <sys_alias action="DELETE">
+        <configuration_template display_value="OAuth Authorization Code Demo Configuration">ddfc6a34873233008f64bd6ec7cb0b33</configuration_template>
+        <connection_type>sys_connection</connection_type>
+        <id>x_snc_paypal_spoke.Paypal</id>
+        <multiple_connections>false</multiple_connections>
+        <name>Paypal</name>
+        <parent/>
+        <retry_policy display_value="Default SFTP Retry Policy">e385484773100010e3a71afe2ff6a709</retry_policy>
+        <sys_class_name>sys_alias</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-06 12:38:13</sys_created_on>
+        <sys_id>4922833b1ba71010ed077596cc4bcb8c</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>x_snc_paypal_spoke.Paypal</sys_name>
+        <sys_package display_value="Paypal Spoke" source="x_snc_paypal_spoke">718d109ddb98cc1064dcf5861d9619e8</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name>sys_alias_4922833b1ba71010ed077596cc4bcb8c</sys_update_name>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-06 12:45:57</sys_updated_on>
+        <type>connection</type>
+    </sys_alias>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</application>
+        <file_path/>
+        <instance_id>e24fe9e5dbcbf380f492c597059619c1</instance_id>
+        <instance_name>dev90529</instance_name>
+        <name>sys_alias_4922833b1ba71010ed077596cc4bcb8c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_alias"><sys_alias action="INSERT_OR_UPDATE"><configuration_template display_value="OAuth Authorization Code Demo Configuration">ddfc6a34873233008f64bd6ec7cb0b33</configuration_template><connection_type>sys_connection</connection_type><id>x_snc_paypal_spoke.Paypal</id><multiple_connections>false</multiple_connections><name>Paypal</name><parent/><retry_policy display_value="Default SFTP Retry Policy">e385484773100010e3a71afe2ff6a709</retry_policy><sys_class_name>sys_alias</sys_class_name><sys_created_by>23Thom</sys_created_by><sys_created_on>2020-10-06 12:38:13</sys_created_on><sys_id>4922833b1ba71010ed077596cc4bcb8c</sys_id><sys_mod_count>3</sys_mod_count><sys_name>x_snc_paypal_spoke.Paypal</sys_name><sys_package display_value="Paypal Spoke" source="x_snc_paypal_spoke">718d109ddb98cc1064dcf5861d9619e8</sys_package><sys_policy/><sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope><sys_update_name>sys_alias_4922833b1ba71010ed077596cc4bcb8c</sys_update_name><sys_updated_by>23Thom</sys_updated_by><sys_updated_on>2020-10-06 12:45:57</sys_updated_on><type>connection</type></sys_alias></record_update>]]></payload>
+        <payload_hash>743640406</payload_hash>
+        <record_name>x_snc_paypal_spoke.Paypal</record_name>
+        <reverted_from/>
+        <source>5617f2bf1b671010ed077596cc4bcbbd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-06 12:45:57</sys_created_on>
+        <sys_id>d8b40f7b1ba71010ed077596cc4bcb74</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>174fdf26d220000001</sys_recorded_at>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-06 12:45:57</sys_updated_on>
+        <type>Connection &amp; Credential Aliases</type>
+        <update_guid>14b40f7b62a71010c657071093843774</update_guid>
+        <update_guid_history>14b40f7b62a71010c657071093843774:743640406,9394477baea710103695a2f357b5fc27:-1562335300,4a840f7b52a71010afa3a9c21c16df6d:743640406,43e28b3bb3a7101070c84f1e0ec9096a:-1346972443</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-06 14:52:30</sys_created_on>
+        <sys_db_object display_value="" name="sys_alias">sys_alias</sys_db_object>
+        <sys_id>032ce6588b8d451792ee78560a706ee1</sys_id>
+        <sys_metadata>4922833b1ba71010ed077596cc4bcb8c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_paypal_spoke.Paypal</sys_name>
+        <sys_package display_value="Paypal Spoke" source="x_snc_paypal_spoke">718d109ddb98cc1064dcf5861d9619e8</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_scope_delete display_value="">2f8023b927364c70b998f5bbab584440</sys_scope_delete>
+        <sys_update_name>sys_alias_4922833b1ba71010ed077596cc4bcb8c</sys_update_name>
+        <sys_update_version display_value="sys_alias_4922833b1ba71010ed077596cc4bcb8c">d8b40f7b1ba71010ed077596cc4bcb74</sys_update_version>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-06 14:52:30</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

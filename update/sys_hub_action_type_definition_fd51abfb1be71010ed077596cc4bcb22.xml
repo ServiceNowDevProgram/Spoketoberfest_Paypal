@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <action_template/>
+        <active>true</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="General">3541abfb1be71010ed077596cc4bcb1e</category>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <ih_action>false</ih_action>
+        <internal_name>get_token</internal_name>
+        <label_cache>[{"name":"{{step[c4be8a4c-c2b9-4427-a9bb-8eaba6749390].variable}}","label":"step➛Script step➛variable","type":"step","ref":""},{"name":"{{step[c4be8a4c-c2b9-4427-a9bb-8eaba6749390].access_token}}","label":"step➛Script step➛Access Token","type":"step","ref":""}]</label_cache>
+        <latest_snapshot>0feab1201b731010ed077596cc4bcb94</latest_snapshot>
+        <master_snapshot>59c0f5281b331010ed077596cc4bcbce</master_snapshot>
+        <name>get Token</name>
+        <natlang/>
+        <outputs/>
+        <state>published</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-06 14:51:07</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>fd51abfb1be71010ed077596cc4bcb22</sys_id>
+        <sys_mod_count>39</sys_mod_count>
+        <sys_name>get Token</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Paypal Spoke" source="x_snc_paypal_spoke">718d109ddb98cc1064dcf5861d9619e8</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_fd51abfb1be71010ed077596cc4bcb22</sys_update_name>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:05</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=fd51abfb1be71010ed077596cc4bcb22"/>
+    <sys_variable_value action="delete_multiple" query="document_key=fd51abfb1be71010ed077596cc4bcb22"/>
+    <sys_hub_step_instance action="delete_multiple" query="action=fd51abfb1be71010ed077596cc4bcb22^sys_idNOT IN1a9c25641b331010ed077596cc4bcb96"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="get Token">fd51abfb1be71010ed077596cc4bcb22</action>
+        <cid>c4be8a4c-c2b9-4427-a9bb-8eaba6749390</cid>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:16:30</sys_created_on>
+        <sys_id>1a9c25641b331010ed077596cc4bcb96</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:02</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=1a9c25641b331010ed077596cc4bcb96"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>1a9c25641b331010ed077596cc4bcb96</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:16:30</sys_created_on>
+        <sys_id>2e9c25641b331010ed077596cc4bcba0</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:02</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+  try{
+    var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v1/oauth2/token';
+    var clientId = gs.getProperty('x_snc_paypal_spoke.client_id');
+    var clientSecret = gs.getProperty('x_snc_paypal_spoke.client_secret');
+    var getTokenRest = new sn_ws.RESTMessageV2();
+    getTokenRest.setEndpoint(restEndpoint);
+    getTokenRest.setHttpMethod("post");
+    getTokenRest.setRequestHeader(
+      "content-type",
+      "application/x-www-form-urlencoded"
+    );
+    getTokenRest.setRequestBody('grant_type=client_credentials');
+    getTokenRest.setBasicAuth(clientId,clientSecret);
+    var response = getTokenRest.execute();
+    var httpStatus = response.getStatusCode();
+    var responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+
+    if(httpStatus == '200'){
+      var responseJson = JSON.parse(responseBody);
+      outputs.access_token = responseJson.access_token;
+    }
+    
+  }catch(e){
+    gs.info('Error - get Token - Paypal spoke ' + e.message);
+  }
+})(inputs, outputs);
+</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>1a9c25641b331010ed077596cc4bcb96</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:20:22</sys_created_on>
+        <sys_id>4f7dad641b331010ed077596cc4bcb86</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:20:22</sys_updated_on>
+        <value/>
+        <variable display_value="">2c226939b3101300176b051a16a8dc83</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>1a9c25641b331010ed077596cc4bcb96</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:20:22</sys_created_on>
+        <sys_id>8b7dad641b331010ed077596cc4bcb86</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:20:22</sys_updated_on>
+        <value/>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=1a9c25641b331010ed077596cc4bcb96^sys_idNOT INc1b0b5281b331010ed077596cc4bcba8"/>
+    <sys_hub_step_ext_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=6388cee3-a7af-40fb-b804-1e98260eae11</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>access_token</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Access Token</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">1a9c25641b331010ed077596cc4bcb96</model>
+        <model_id>1a9c25641b331010ed077596cc4bcb96</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_output_1a9c25641b331010ed077596cc4bcb96</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_output</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:26</sys_created_on>
+        <sys_id>c1b0b5281b331010ed077596cc4bcba8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:26</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_output>
+    <sys_hub_step_instance action="delete_multiple" query="action=fd51abfb1be71010ed077596cc4bcb22^sys_idNOT IN1a9c25641b331010ed077596cc4bcb96"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="get Token">fd51abfb1be71010ed077596cc4bcb22</action>
+        <cid>c4be8a4c-c2b9-4427-a9bb-8eaba6749390</cid>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:16:30</sys_created_on>
+        <sys_id>1a9c25641b331010ed077596cc4bcb96</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:02</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=1a9c25641b331010ed077596cc4bcb96"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>1a9c25641b331010ed077596cc4bcb96</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:16:30</sys_created_on>
+        <sys_id>2e9c25641b331010ed077596cc4bcba0</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:02</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+  try{
+    var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v1/oauth2/token';
+    var clientId = gs.getProperty('x_snc_paypal_spoke.client_id');
+    var clientSecret = gs.getProperty('x_snc_paypal_spoke.client_secret');
+    var getTokenRest = new sn_ws.RESTMessageV2();
+    getTokenRest.setEndpoint(restEndpoint);
+    getTokenRest.setHttpMethod("post");
+    getTokenRest.setRequestHeader(
+      "content-type",
+      "application/x-www-form-urlencoded"
+    );
+    getTokenRest.setRequestBody('grant_type=client_credentials');
+    getTokenRest.setBasicAuth(clientId,clientSecret);
+    var response = getTokenRest.execute();
+    var httpStatus = response.getStatusCode();
+    var responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+
+    if(httpStatus == '200'){
+      var responseJson = JSON.parse(responseBody);
+      outputs.access_token = responseJson.access_token;
+    }
+    
+  }catch(e){
+    gs.info('Error - get Token - Paypal spoke ' + e.message);
+  }
+})(inputs, outputs);
+</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>1a9c25641b331010ed077596cc4bcb96</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:20:22</sys_created_on>
+        <sys_id>4f7dad641b331010ed077596cc4bcb86</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:20:22</sys_updated_on>
+        <value/>
+        <variable display_value="">2c226939b3101300176b051a16a8dc83</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>1a9c25641b331010ed077596cc4bcb96</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:20:22</sys_created_on>
+        <sys_id>8b7dad641b331010ed077596cc4bcb86</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:20:22</sys_updated_on>
+        <value/>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=1a9c25641b331010ed077596cc4bcb96^sys_idNOT INc1b0b5281b331010ed077596cc4bcba8"/>
+    <sys_hub_step_ext_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=6388cee3-a7af-40fb-b804-1e98260eae11</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>access_token</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Access Token</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">1a9c25641b331010ed077596cc4bcb96</model>
+        <model_id>1a9c25641b331010ed077596cc4bcb96</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_output_1a9c25641b331010ed077596cc4bcb96</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_output</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:26</sys_created_on>
+        <sys_id>c1b0b5281b331010ed077596cc4bcba8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:26</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_output>
+    <sys_hub_action_plan action="delete_multiple" query="action_id=fd51abfb1be71010ed077596cc4bcb22^sys_idNOT INa5c039281b331010ed077596cc4bcb11"/>
+    <sys_hub_action_plan action="INSERT_OR_UPDATE">
+        <action_id display_value="get Token">fd51abfb1be71010ed077596cc4bcb22</action_id>
+        <plan>{"persistor":{"@class":".ChunkingPlanPersistor","table":"sys_hub_action_plan","id":"a5c039281b331010ed077596cc4bcb11","name":"plan"}}</plan>
+        <snapshot>0feab1201b731010ed077596cc4bcb94</snapshot>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>a5c039281b331010ed077596cc4bcb11</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:06</sys_updated_on>
+    </sys_hub_action_plan>
+    <sys_hub_action_type_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <action_template/>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="General">3541abfb1be71010ed077596cc4bcb1e</category>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <internal_name>get_token</internal_name>
+        <label_cache>[{"name":"{{step[c4be8a4c-c2b9-4427-a9bb-8eaba6749390].variable}}","label":"step➛Script step➛variable","type":"step","ref":""},{"name":"{{step[c4be8a4c-c2b9-4427-a9bb-8eaba6749390].access_token}}","label":"step➛Script step➛Access Token","type":"step","ref":""}]</label_cache>
+        <master>true</master>
+        <name>get Token</name>
+        <natlang/>
+        <outputs/>
+        <parent_action display_value="get Token">fd51abfb1be71010ed077596cc4bcb22</parent_action>
+        <sys_class_name>sys_hub_action_type_snapshot</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>59c0f5281b331010ed077596cc4bcbce</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:44</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_snapshot>
+    <sys_translated_text action="delete_multiple" query="documentkey=59c0f5281b331010ed077596cc4bcbce"/>
+    <sys_variable_value action="delete_multiple" query="document_key=59c0f5281b331010ed077596cc4bcbce"/>
+    <sys_hub_step_instance action="delete_multiple" query="action=59c0f5281b331010ed077596cc4bcbce^sys_idNOT IN55c0f5281b331010ed077596cc4bcbd0"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="get Token">59c0f5281b331010ed077596cc4bcbce</action>
+        <cid>c4be8a4c-c2b9-4427-a9bb-8eaba6749390</cid>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>55c0f5281b331010ed077596cc4bcbd0</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:05</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=55c0f5281b331010ed077596cc4bcbd0"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>55c0f5281b331010ed077596cc4bcbd0</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>11c0f5281b331010ed077596cc4bcbdd</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:05</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+  try{
+    var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v1/oauth2/token';
+    var clientId = gs.getProperty('x_snc_paypal_spoke.client_id');
+    var clientSecret = gs.getProperty('x_snc_paypal_spoke.client_secret');
+    var getTokenRest = new sn_ws.RESTMessageV2();
+    getTokenRest.setEndpoint(restEndpoint);
+    getTokenRest.setHttpMethod("post");
+    getTokenRest.setRequestHeader(
+      "content-type",
+      "application/x-www-form-urlencoded"
+    );
+    getTokenRest.setRequestBody('grant_type=client_credentials');
+    getTokenRest.setBasicAuth(clientId,clientSecret);
+    var response = getTokenRest.execute();
+    var httpStatus = response.getStatusCode();
+    var responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+
+    if(httpStatus == '200'){
+      var responseJson = JSON.parse(responseBody);
+      outputs.access_token = responseJson.access_token;
+    }
+    
+  }catch(e){
+    gs.info('Error - get Token - Paypal spoke ' + e.message);
+  }
+})(inputs, outputs);
+</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>55c0f5281b331010ed077596cc4bcbd0</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>5dc0f5281b331010ed077596cc4bcbdc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:44</sys_updated_on>
+        <value/>
+        <variable display_value="">2c226939b3101300176b051a16a8dc83</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>55c0f5281b331010ed077596cc4bcbd0</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>99c0f5281b331010ed077596cc4bcbdc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:44</sys_updated_on>
+        <value/>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=55c0f5281b331010ed077596cc4bcbd0^sys_idNOT IN9dc0f5281b331010ed077596cc4bcbd3"/>
+    <sys_hub_step_ext_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=6388cee3-a7af-40fb-b804-1e98260eae11</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>access_token</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Access Token</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">55c0f5281b331010ed077596cc4bcbd0</model>
+        <model_id>55c0f5281b331010ed077596cc4bcbd0</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_output_55c0f5281b331010ed077596cc4bcbd0</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_output</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>9dc0f5281b331010ed077596cc4bcbd3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:44</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_output>
+    <sys_hub_step_instance action="delete_multiple" query="action=59c0f5281b331010ed077596cc4bcbce^sys_idNOT IN55c0f5281b331010ed077596cc4bcbd0"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="get Token">59c0f5281b331010ed077596cc4bcbce</action>
+        <cid>c4be8a4c-c2b9-4427-a9bb-8eaba6749390</cid>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>55c0f5281b331010ed077596cc4bcbd0</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:05</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=55c0f5281b331010ed077596cc4bcbd0"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>55c0f5281b331010ed077596cc4bcbd0</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>11c0f5281b331010ed077596cc4bcbdd</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 15:19:05</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+  try{
+    var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v1/oauth2/token';
+    var clientId = gs.getProperty('x_snc_paypal_spoke.client_id');
+    var clientSecret = gs.getProperty('x_snc_paypal_spoke.client_secret');
+    var getTokenRest = new sn_ws.RESTMessageV2();
+    getTokenRest.setEndpoint(restEndpoint);
+    getTokenRest.setHttpMethod("post");
+    getTokenRest.setRequestHeader(
+      "content-type",
+      "application/x-www-form-urlencoded"
+    );
+    getTokenRest.setRequestBody('grant_type=client_credentials');
+    getTokenRest.setBasicAuth(clientId,clientSecret);
+    var response = getTokenRest.execute();
+    var httpStatus = response.getStatusCode();
+    var responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+
+    if(httpStatus == '200'){
+      var responseJson = JSON.parse(responseBody);
+      outputs.access_token = responseJson.access_token;
+    }
+    
+  }catch(e){
+    gs.info('Error - get Token - Paypal spoke ' + e.message);
+  }
+})(inputs, outputs);
+</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>55c0f5281b331010ed077596cc4bcbd0</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>5dc0f5281b331010ed077596cc4bcbdc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:44</sys_updated_on>
+        <value/>
+        <variable display_value="">2c226939b3101300176b051a16a8dc83</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>55c0f5281b331010ed077596cc4bcbd0</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>99c0f5281b331010ed077596cc4bcbdc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:44</sys_updated_on>
+        <value/>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=55c0f5281b331010ed077596cc4bcbd0^sys_idNOT IN9dc0f5281b331010ed077596cc4bcbd3"/>
+    <sys_hub_step_ext_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=6388cee3-a7af-40fb-b804-1e98260eae11</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>access_token</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Access Token</label>
+        <mandatory>true</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Script step">55c0f5281b331010ed077596cc4bcbd0</model>
+        <model_id>55c0f5281b331010ed077596cc4bcbd0</model_id>
+        <model_table>sys_hub_step_instance</model_table>
+        <name>var__m_sys_hub_step_ext_output_55c0f5281b331010ed077596cc4bcbd0</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_step_ext_output</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:34:44</sys_created_on>
+        <sys_id>9dc0f5281b331010ed077596cc4bcbd3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:34:44</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_step_ext_output>
+</record_update>

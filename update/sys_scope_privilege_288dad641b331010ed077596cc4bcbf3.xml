@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <operation>execute</operation>
+        <source_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>23Thom</sys_created_by>
+        <sys_created_on>2020-10-08 14:20:28</sys_created_on>
+        <sys_id>288dad641b331010ed077596cc4bcbf3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ScriptableRESTMessageClient.setEndpoint</sys_name>
+        <sys_package display_value="Paypal Spoke" source="x_snc_paypal_spoke">718d109ddb98cc1064dcf5861d9619e8</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
+        <sys_update_name>sys_scope_privilege_288dad641b331010ed077596cc4bcbf3</sys_update_name>
+        <sys_updated_by>23Thom</sys_updated_by>
+        <sys_updated_on>2020-10-08 14:20:28</sys_updated_on>
+        <target_name>ScriptableRESTMessageClient.setEndpoint</target_name>
+        <target_scope display_value="Global">global</target_scope>
+        <target_type>scriptable</target_type>
+    </sys_scope_privilege>
+</record_update>
