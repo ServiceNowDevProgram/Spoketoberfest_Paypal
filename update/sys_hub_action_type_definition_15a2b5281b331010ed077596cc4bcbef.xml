@@ -13,7 +13,7 @@
         <ih_action>false</ih_action>
         <internal_name>create_order</internal_name>
         <label_cache>[{"name":"{{action.access_token}}","label":"action➛Access Token","type":"action","ref":""},{"name":"{{action.currency}}","label":"action➛Currency","type":"action","ref":""},{"name":"{{action.value}}","label":"action➛Value","type":"action","ref":""},{"name":"{{step[483ac176-43a6-4e5c-9684-97b9af30a6c9].variable}}","label":"step➛REST create order➛variable","type":"step","ref":""},{"name":"{{step[483ac176-43a6-4e5c-9684-97b9af30a6c9].redirect_url}}","label":"step➛REST create order➛Redirect URL","type":"step","ref":""}]</label_cache>
-        <latest_snapshot>440b35201b731010ed077596cc4bcb8d</latest_snapshot>
+        <latest_snapshot>f55aea6c1bb31010ed077596cc4bcbf1</latest_snapshot>
         <master_snapshot>1657f16c1b331010ed077596cc4bcbaa</master_snapshot>
         <name>Create order</name>
         <natlang/>
@@ -25,7 +25,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>15a2b5281b331010ed077596cc4bcbef</sys_id>
-        <sys_mod_count>29</sys_mod_count>
+        <sys_mod_count>41</sys_mod_count>
         <sys_name>Create order</sys_name>
         <sys_overrides/>
         <sys_package display_value="Paypal Spoke" source="x_snc_paypal_spoke">718d109ddb98cc1064dcf5861d9619e8</sys_package>
@@ -33,7 +33,7 @@
         <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
         <sys_update_name>sys_hub_action_type_definition_15a2b5281b331010ed077596cc4bcbef</sys_update_name>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:26</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:16</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_definition>
@@ -56,10 +56,10 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 14:44:07</sys_created_on>
         <sys_id>03e27d681b331010ed077596cc4bcb38</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:22</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:11</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=03e27d681b331010ed077596cc4bcb38"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -84,9 +84,9 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 14:44:08</sys_created_on>
         <sys_id>4be27d681b331010ed077596cc4bcb4b</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:22</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:11</sys_updated_on>
         <value>(function execute(inputs, outputs) {
   try{
     var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v2/checkout/orders';
@@ -102,12 +102,20 @@
       "Authorization",
       "Bearer "+paypalToken
     );
+    var supportedCurrencys = ['AUD', 'BRL', 'CAD', 'CNY', 'CZK', 'DKK', 'EUR', 'HKD', 'HUF', 'INR', 'ILS', 'JPY', 'MYR', 'MXN', 'TWD', 'NZD', 'NOK', 'PHP', 'PLN', 'GBP', 'RUB', 'SGD', 'SEK', 'CHF', 'THB', 'USD'];
+    var inputCurrency = '';
+    if(supportedCurrencys.indexOf(inputs.currency) &gt; -1){
+      inputCurrency = inputs.currency;
+    }else{
+      inputCurrency = 'USD';
+    }
+
     var requestBody = {
       "intent": "CAPTURE",
       "purchase_units": [
         {
           "amount": {
-            "currency_code": inputs.currency,
+            "currency_code": inputCurrency,
             "value": inputs.value
           }
         }
@@ -121,7 +129,7 @@
       var responseJson = JSON.parse(responseBody);
       outputs.redirect_url = responseJson.links[1].href;
     }
-    
+
   }catch(e){
     gs.info('Error - create Order - Paypal spoke ' + e.message);
   }
@@ -804,10 +812,10 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 14:44:07</sys_created_on>
         <sys_id>03e27d681b331010ed077596cc4bcb38</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:22</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:11</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=03e27d681b331010ed077596cc4bcb38"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -832,9 +840,9 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 14:44:08</sys_created_on>
         <sys_id>4be27d681b331010ed077596cc4bcb4b</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:22</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:11</sys_updated_on>
         <value>(function execute(inputs, outputs) {
   try{
     var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v2/checkout/orders';
@@ -850,12 +858,20 @@
       "Authorization",
       "Bearer "+paypalToken
     );
+    var supportedCurrencys = ['AUD', 'BRL', 'CAD', 'CNY', 'CZK', 'DKK', 'EUR', 'HKD', 'HUF', 'INR', 'ILS', 'JPY', 'MYR', 'MXN', 'TWD', 'NZD', 'NOK', 'PHP', 'PLN', 'GBP', 'RUB', 'SGD', 'SEK', 'CHF', 'THB', 'USD'];
+    var inputCurrency = '';
+    if(supportedCurrencys.indexOf(inputs.currency) &gt; -1){
+      inputCurrency = inputs.currency;
+    }else{
+      inputCurrency = 'USD';
+    }
+
     var requestBody = {
       "intent": "CAPTURE",
       "purchase_units": [
         {
           "amount": {
-            "currency_code": inputs.currency,
+            "currency_code": inputCurrency,
             "value": inputs.value
           }
         }
@@ -869,7 +885,7 @@
       var responseJson = JSON.parse(responseBody);
       outputs.redirect_url = responseJson.links[1].href;
     }
-    
+
   }catch(e){
     gs.info('Error - create Order - Paypal spoke ' + e.message);
   }
@@ -1365,17 +1381,17 @@
     <sys_hub_action_plan action="INSERT_OR_UPDATE">
         <action_id display_value="Create order">15a2b5281b331010ed077596cc4bcbef</action_id>
         <plan>{"persistor":{"@class":".ChunkingPlanPersistor","table":"sys_hub_action_plan","id":"2e57356c1b331010ed077596cc4bcb30","name":"plan"}}</plan>
-        <snapshot>440b35201b731010ed077596cc4bcb8d</snapshot>
+        <snapshot>f55aea6c1bb31010ed077596cc4bcbf1</snapshot>
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 15:03:29</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2e57356c1b331010ed077596cc4bcb30</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_overrides/>
         <sys_scope/>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:27</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:16</sys_updated_on>
     </sys_hub_action_plan>
     <sys_hub_action_type_snapshot action="INSERT_OR_UPDATE">
         <access>public</access>
@@ -1431,10 +1447,10 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 15:03:28</sys_created_on>
         <sys_id>5257f16c1b331010ed077596cc4bcbcb</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:26</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:15</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=5257f16c1b331010ed077596cc4bcbcb"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -1473,9 +1489,9 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 15:03:28</sys_created_on>
         <sys_id>d657f16c1b331010ed077596cc4bcbf6</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:26</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:15</sys_updated_on>
         <value>(function execute(inputs, outputs) {
   try{
     var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v2/checkout/orders';
@@ -1491,12 +1507,20 @@
       "Authorization",
       "Bearer "+paypalToken
     );
+    var supportedCurrencys = ['AUD', 'BRL', 'CAD', 'CNY', 'CZK', 'DKK', 'EUR', 'HKD', 'HUF', 'INR', 'ILS', 'JPY', 'MYR', 'MXN', 'TWD', 'NZD', 'NOK', 'PHP', 'PLN', 'GBP', 'RUB', 'SGD', 'SEK', 'CHF', 'THB', 'USD'];
+    var inputCurrency = '';
+    if(supportedCurrencys.indexOf(inputs.currency) &gt; -1){
+      inputCurrency = inputs.currency;
+    }else{
+      inputCurrency = 'USD';
+    }
+
     var requestBody = {
       "intent": "CAPTURE",
       "purchase_units": [
         {
           "amount": {
-            "currency_code": inputs.currency,
+            "currency_code": inputCurrency,
             "value": inputs.value
           }
         }
@@ -1510,7 +1534,7 @@
       var responseJson = JSON.parse(responseBody);
       outputs.redirect_url = responseJson.links[1].href;
     }
-    
+
   }catch(e){
     gs.info('Error - create Order - Paypal spoke ' + e.message);
   }
@@ -2179,10 +2203,10 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 15:03:28</sys_created_on>
         <sys_id>5257f16c1b331010ed077596cc4bcbcb</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_scope display_value="Paypal Spoke">718d109ddb98cc1064dcf5861d9619e8</sys_scope>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:26</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:15</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=5257f16c1b331010ed077596cc4bcbcb"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -2221,9 +2245,9 @@
         <sys_created_by>23Thom</sys_created_by>
         <sys_created_on>2020-10-08 15:03:28</sys_created_on>
         <sys_id>d657f16c1b331010ed077596cc4bcbf6</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_updated_by>23Thom</sys_updated_by>
-        <sys_updated_on>2020-10-08 15:19:26</sys_updated_on>
+        <sys_updated_on>2020-10-08 18:46:15</sys_updated_on>
         <value>(function execute(inputs, outputs) {
   try{
     var restEndpoint = gs.getProperty('x_snc_paypal_spoke.endpoint')+'/v2/checkout/orders';
@@ -2239,12 +2263,20 @@
       "Authorization",
       "Bearer "+paypalToken
     );
+    var supportedCurrencys = ['AUD', 'BRL', 'CAD', 'CNY', 'CZK', 'DKK', 'EUR', 'HKD', 'HUF', 'INR', 'ILS', 'JPY', 'MYR', 'MXN', 'TWD', 'NZD', 'NOK', 'PHP', 'PLN', 'GBP', 'RUB', 'SGD', 'SEK', 'CHF', 'THB', 'USD'];
+    var inputCurrency = '';
+    if(supportedCurrencys.indexOf(inputs.currency) &gt; -1){
+      inputCurrency = inputs.currency;
+    }else{
+      inputCurrency = 'USD';
+    }
+
     var requestBody = {
       "intent": "CAPTURE",
       "purchase_units": [
         {
           "amount": {
-            "currency_code": inputs.currency,
+            "currency_code": inputCurrency,
             "value": inputs.value
           }
         }
@@ -2258,7 +2290,7 @@
       var responseJson = JSON.parse(responseBody);
       outputs.redirect_url = responseJson.links[1].href;
     }
-    
+
   }catch(e){
     gs.info('Error - create Order - Paypal spoke ' + e.message);
   }
